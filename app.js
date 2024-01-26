@@ -25,7 +25,7 @@ app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, secure: true /*secure: false*/ },
+        cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None"},
         resave: false,
         //domain: "localhost",
         domain: "https://carpalace.netlify.app",
