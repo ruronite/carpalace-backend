@@ -27,7 +27,8 @@ app.use(
         secret: "qEas5ns3gxl41G",
         cookie: { maxAge: 86400000, secure: true /*secure: false*/ },
         resave: false,
-        domain: "localhost",
+        //domain: "localhost",
+        domain: "https://carpalace.netlify.app",
         saveUninitialized: false,
     })
 );
