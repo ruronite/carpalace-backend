@@ -25,7 +25,7 @@ app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, secure: false },
+        cookie: { maxAge: 86400000, secure: true /*secure: false*/ },
         resave: false,
         domain: "localhost",
         saveUninitialized: false,
@@ -34,7 +34,8 @@ app.use(
 
 app.use(cors({
     credentials: true,
-    //origin: "http://localhost:3000"
+    //origin: "http://localhost:3000",
+    origin: "https://carpalace.netlify.app"
 }))
 app.use(express.json());
 
