@@ -21,12 +21,12 @@ const store = new pgSession({
 });
 
 /*check if cookie parser is causing a conflict*/
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None"},
+        cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None", /*httpOnly: true*/},
         resave: false,
         //domain: "localhost",
         /*domain value SHOULD NOT contain protocol"*/
