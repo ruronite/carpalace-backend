@@ -17,9 +17,10 @@ const store = new pgSession({
     pool, // Pass the PostgreSQL connection pool
     /**default table_name is session if table_name is not specified */
     tableName: "carpalace_session",
-    encrypt: true,
+    //encrypt: true,
 });
 
+/*check if cookie parser is causing a conflict*/
 app.use(cookieParser());
 app.use(
     session({
@@ -28,7 +29,9 @@ app.use(
         cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None"},
         resave: false,
         //domain: "localhost",
-        domain: "https://carpalace.netlify.app",
+        /*domain value SHOULD NOT contain protocol"*/
+        //domain: "https://carpalace.netlify.app",
+        domain: "carpalace.netlify.app",
         saveUninitialized: false,
     })
 );
