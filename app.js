@@ -26,7 +26,7 @@ app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None", httpOnly: true},
+        cookie: { maxAge: 86400000, secure: true /*secure: false*/ , sameSite: "None", httpsOnly: true},
         resave: false,
         //domain: "localhost",
         /*domain value SHOULD NOT contain protocol"*/
@@ -98,7 +98,7 @@ app.post("/login", async (req, res, next) => {
     //checks, validation, and normalization
     try {
         let user_profile = await pool.query("SELECT user_name, first_name, email, location, phone FROM carpalace_users WHERE password=$1 AND (user_name = $2 OR email = $2)", [password, userIdentity]);
-        console.log("profile search", user_profile)
+        //console.log("profile search", user_profile)
         if (user_profile.rows.length > 0) {
             let user = user_profile.rows[0]
             console.log("User found")
