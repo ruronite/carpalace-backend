@@ -44,7 +44,13 @@ app.use(cors({
 app.use(express.json());
 
 
-
+// Middleware to set the Connection header to keep-alive
+app.use((req, res, next) => {
+    res.setHeader("Connection", "keep-alive");
+    next();
+  });
+  
+  // ...
 
 app.get("/loginstatus", async (req, res, next) => {
     let checkStatus = await req.session.authenticated;
