@@ -21,7 +21,7 @@ const store = new pgSession({
 });
 
 /*check if cookie parser is causing a conflict*/
-//app.use(cookieParser());
+app.use(cookieParser());
 app.use(
     session({
         store: store,
@@ -31,7 +31,7 @@ app.use(
         //domain: "localhost",
         /*domain value SHOULD NOT contain protocol"*/
         //domain: "https://carpalace.netlify.app",
-        domain: "carpalace.netlify.app",
+        //domain: "carpalace.netlify.app",
         saveUninitialized: false,
     })
 );
@@ -174,7 +174,7 @@ app.get("/getCart", (req, res, next) => {
 })
 
 
-app.put("/addToCart", (req, res, next) => {
+app.put("/addtocart", (req, res, next) => {
     console.log("Incoming request", req.body)
     let newItem = req.body;
     let newItemPrice = req.body.price;
