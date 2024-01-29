@@ -19,6 +19,8 @@ const store = new pgSession({
     tableName: "carpalace_session",
 });
 
+// trust first proxy
+app.set('trust proxy', 1) 
 /*check if cookie parser is causing a conflict*/
 app.use(cookieParser());
 app.use(
