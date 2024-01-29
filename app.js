@@ -25,7 +25,7 @@ app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, /*secure: true*/ secure: false, sameSite: "lax", /*httpOnly: true*/},
+        cookie: { maxAge: 86400000, secure: true /*secure: false*/, sameSite: "none", /*httpOnly: true*/},
         resave: false,
         //domain: "localhost",
         /*domain value SHOULD NOT contain protocol"*/
