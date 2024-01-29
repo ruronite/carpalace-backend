@@ -17,7 +17,6 @@ const store = new pgSession({
     pool, // Pass the PostgreSQL connection pool
     /**default table_name is session if table_name is not specified */
     tableName: "carpalace_session",
-    //encrypt: true,
 });
 
 /*check if cookie parser is causing a conflict*/
@@ -26,7 +25,7 @@ app.use(
     session({
         store: store,
         secret: "qEas5ns3gxl41G",
-        cookie: { maxAge: 86400000, /*secure: true*/ secure: false , /*sameSite: "None",*/ /*httpOnly: true*/},
+        cookie: { maxAge: 86400000, /*secure: true*/ secure: false, sameSite: "lax", /*httpOnly: true*/},
         resave: false,
         //domain: "localhost",
         /*domain value SHOULD NOT contain protocol"*/
@@ -43,14 +42,6 @@ app.use(cors({
 }))
 app.use(express.json());
 
-
-// Middleware to set the Connection header to keep-alive
-app.use((req, res, next) => {
-    res.setHeader("Connection", "keep-alive");
-    next();
-  });
-  
-  // ...
 
 app.get("/loginstatus", async (req, res, next) => {
     let checkStatus = await req.session.authenticated;
